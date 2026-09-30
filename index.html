@@ -11,6 +11,7 @@
 
 <body>
   <script src="dither-script/as-dithered-image.js"></script>
+  <canvas id="bg"></canvas>
 
   <!-- <img id="tex" src="img/tex.webp"/> -->
 
@@ -45,12 +46,12 @@
           data-src="src/260124blindingfaith.mp4"></video></div>
       <p class="desc">blinding faith <span class="etoile">*</span> 01/26</p>
     </div>
-    <a href="items/windows.html">
+    <!-- <a href="items/windows.html"> -->
       <div class="item">
         <div class="media"><video poster="src/posters/260119windows.jpg" data-src="src/260119windows.mp4"></video></div>
         <p class="desc">windows <span class="etoile">*</span> 01/26</p>
       </div>
-    </a>
+    <!-- </a> -->
     <div class="item">
       <div class="media"><img src="src/250602spikes.webp" /></div>
       <p class="desc">spikes <span class="etoile">*</span> 06/25</p>
@@ -72,12 +73,12 @@
       <div class="media"><video poster="src/posters/241118wax.jpg" data-src="src/241118wax.mp4"></video></div>
       <p class="desc">Wax <span class="etoile">*</span> 11/24</p>
     </div>
-    <a href="items/storm.html">
+    <!-- <a href="items/storm.html"> -->
       <div class="item">
         <div class="media"><video poster="src/posters/241116storm.jpg" data-src="src/241116storm.mp4"></video></div>
         <p class="desc">storm <span class="etoile">*</span> 11/24</p>
       </div>
-    </a>
+    <!-- </a> -->
     <div class="item">
       <div class="media"><video poster="src/posters/241108suffocate.jpg" data-src="src/241108suffocate.mp4"></video>
       </div>
@@ -215,8 +216,9 @@
       curated selection of my works, both personal and professional, please visit my official portfolio at <a
         href="https://oglaize.framer.media/" target="_blank">https://oglaize.framer.media/</a>.
     </p> <br />
-    <hr class="solid"><br />
-    This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><img
+    <hr><br />
+    <p class="licence">
+      This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><img
       src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""
       style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
       src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""
@@ -225,6 +227,7 @@
       style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
       src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt=""
       style="max-width: 1em;max-height:1em;margin-left: .2em;">
+    </p>
   </footer>
   <svg style="position:absolute; width:0; height:0;">
     <filter id="duotone">
@@ -249,6 +252,98 @@
     <div class="lightbox-content" id="lightbox-content"></div>
     <p class="lightbox-caption" id="lightbox-caption"></p>
   </div>
+
+
+  <!-- SCRIPT LOGO DE FOND -->
+  <script>
+  const canvas = document.getElementById('bg');
+  const gl = canvas.getContext('webgl', { antialias: false });
+
+  const vs = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
+
+  const fs = `
+  precision mediump float;
+  uniform sampler2D uTex;
+  uniform vec2  uRes;
+  uniform float uTime;
+  uniform float uAspect;   // largeur / hauteur du logo
+  uniform float uPx;      // taille d'un "pixel" du dither
+
+  // Bayer 8x8 sans tableau (compatible WebGL1)
+  float b2(vec2 a){ a = floor(a); return fract(a.x/2. + a.y*a.y*.75); }
+  float b4(vec2 a){ return b2(.5*a)*.25 + b2(a); }
+  float b8(vec2 a){ return b4(.5*a)*.25 + b2(a); }
+
+  void main(){
+    vec2 cell = floor(gl_FragCoord.xy / uPx);
+    vec2 res  = uRes / uPx;
+    vec2 p = ((cell + .5) / res - .5) * vec2(res.x / res.y, 1.);
+
+    float a = uTime * .25;                       // vitesse de rotation
+    p = mat2(cos(a), -sin(a), sin(a), cos(a)) * p;
+    // remplace :  p /= .6;  vec2 t = p + .5;
+    const float uSize = 1.2;   // largeur du logo, en hauteurs d'écran
+    vec2 t = vec2(p.x / uSize, p.y * uAspect / uSize) + .5;
+
+    float shape = 0.;
+    float shade = 0.;
+    if (t.x > 0. && t.x < 1. && t.y > 0. && t.y < 1.) {
+      shape = texture2D(uTex, vec2(t.x, 1. - t.y)).a;
+      shade = .35 + .65 * t.y;                   // dégradé qui donne du grain au dither
+    }
+    float v = step(b8(cell), shape * shade);
+    gl_FragColor = vec4(0., 0., 0., v);          // noir ; mets vec4(1.) pour du blanc
+  }`;
+
+  function sh(type, src){ const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog); gl.useProgram(prog);
+
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, 'p');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  const U = n => gl.getUniformLocation(prog, n);
+  const PX = 4; // 2 = fin, 4 = très gros grain
+
+  function resize(){
+    const dpr = Math.min(devicePixelRatio, 2);
+    canvas.width  = innerWidth  * dpr;
+    canvas.height = innerHeight * dpr;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(U('uRes'), canvas.width, canvas.height);
+    gl.uniform1f(U('uPx'), PX * dpr);
+  }
+  addEventListener('resize', resize); resize();
+
+  const img = new Image();
+  img.onload = () => {
+    const tex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.uniform1i(U('uTex'), 0);
+    gl.uniform1f(U('uAspect'), img.naturalWidth / img.naturalHeight);
+    requestAnimationFrame(frame);
+  };
+  img.src = 'img/logo_x0f6-grey.svg'; // PNG avec transparence, ~512-1024 px (un SVG avec width/height explicites marche aussi)
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function frame(t){
+    gl.uniform1f(U('uTime'), reduce ? 0 : t / 1000);
+    gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  </script>
 
   <!-- Script anim logo -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>

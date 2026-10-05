@@ -1,0 +1,46 @@
+:root {
+  --paper: #FFF8E7;
+  --ink: #111;
+  --red: #D7263D;
+  --green: #2E7D32;
+  --yellow: #FFD400;
+  --pink: #FF8FB1;
+  --muted: #6B6B6B;
+  --f-title: "Bricolage Grotesque", "Oswald", sans-serif;
+  --f-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Lexend", system-ui, sans-serif;
+  --f-mono: "Atkinson Hyperlegible Mono", "JetBrains Mono", ui-monospace, monospace;
+}
+
+@media (prefers-color-scheme:dark) {
+  :root {
+    --paper: #141210;
+    --ink: #FFF8E7;
+    --red: #FF5A6E;
+    --green: #4CC37A;
+    --muted: #B8B2A6
+  }
+}
+
+body {
+  font: 18px/1.6 var(--f-body);
+  background: var(--paper);
+  color: var(--ink)
+}
+
+h1 {
+  font: 800 clamp(2.5rem, 8vw, 4.5rem)/1 var(--f-title);
+  font-stretch: 75%;
+  text-transform: uppercase
+}
+
+h2,
+h3 {
+  font: 800 1.75rem/1.15 var(--f-title);
+  text-transform: none
+}
+
+.tag {
+  font-family: var(--f-mono);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink)
+}

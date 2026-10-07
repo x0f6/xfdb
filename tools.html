@@ -5,208 +5,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xfdb</title>
-  <link rel="icon" type="image/x-icon" href="img/logo_x0f6-white-outline.svg" />
+  <link rel="icon" type="image/x-icon" href="img/favicon.svg" />
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+  <script src="logo-lift.js"></script>
 </head>
 
 <body>
-  <script src="dither-script/as-dithered-image.js"></script>
 
   <header>
-    <!-- <a href="https://oglaize.framer.media/" target="_blank" title="Portfolio">
-      <div id="logo-anim"></div>
-    </a> -->
-    <div class="title">xfdb</div>
-    <div class="header-links">
-      <a href="https://oglaize.framer.media/" target="_blank" title="Portfolio">portfolio</a>
-      <a href="index.html">works</a>
-      <a href="fonts.html">fonts</a>
-      <a href="tools.html" title="About">tools</a>
+    <div class="title-menu">
+      <a href="index.html">
+        <div class="title">xf<b>db</b></div>
+      </a>
+      <div class="header-links">
+        <a href="apps.html">apps</a>
+        <a href="fonts.html">fonts</a>
+        <a href="tools.html">tools</a>
+      </div>
+    </div>
+    <div class="page">
+      <h1>Tools</h1>
+      <p class="subtitle">free quality web tools database</p>
     </div>
   </header>
-  <div class="page">
-    <h1>Tools</h1>
-    <p class="subtitle">Unordered free quality tools database</p>
-  </div>
   <main class="fonts">
+    <h2 style="color: var(--re);">compléter avec les marque pages !!</h2>
     <h2>Effects</h2>
-      <ul>
-        <li><a href="https://grainrad.com/">grainrad</a></li>
-        <li>halftonic</li>
-        <li>ladybug</li>
-      </ul><br/>
+    <ul>
+      <li><a href="https://grainrad.com/" target="_blank">grainrad</a></li>
+      <li><a href="https://halftonic.com/" target="_blank">halftonic</a></li>
+      <li><a href="https://app.theladybug.app/home/" target="_blank">ladybug</a></li>
+    </ul><br />
     <h2>ressources</h2>
-      <ul>
-        <li>unsplash</li>
-        <li>pexels</li>
-        <li>texturelabs</li>
-        <li>ufonts</li>
-        <li>lospec</li>
-      </ul><br/>
+    <h3>fonts</h3>
+    <ul>
+      <li><a href="https://www.fontshare.com/" target="_blank">fontshare</a> — curated free fonts library</li>
+      <li><a href="https://fonts.google.com/" target="_blank">google fonts</a> — large free fonts library</li>
+      <li><a href="https://open-foundry.com/" target="_blank">open foundry</a> — curated open source fonts library</li>
+      <li><a href="https://ufonts.com/" target="_blank">ufonts</a> — (not always legal) fonts library</li>
+      <li><a href="https://velvetyne.fr/" target="_blank">velvetyne</a> — quirky free fonts library</li>
+    </ul>
+    <h3>images</h3>
+    <ul>
+      <li><a href="https://www.pexels.com/" target="_blank">pexels</a> — canva free stock</li>
+      <li><a href="https://texturelabs.org/" target="_blank">texturelabs</a> — textures stock</li>
+      <li><a href="https://unsplash.com/" target="_blank">unsplash</a> — free quality stock</li>
+    </ul>
+    <h3>colors</h3>
+    <ul>
+      <li><a href="https://lospec.com/" target="_blank">lospec</a> — pixel art oriented color palettes</li>
+    </ul><br />
     <h2>inspiration</h2>
-      <ul>
-        <li>newsreader</li>
-      </ul>
+    <ul>
+      <li><a href="https://archives.design/" target="_blank">archives.design</a></li>
+      <li><a href="https://www.are.na/" target="_blank">are.na</a> — pinterest alternative</li>
+      <li><a href="https://cari.institute/" target="_blank">cari institute</a> — aesthetics categorization</li>
+      <li><a href="https://www.cosmos.so/" target="_blank">cosmos</a> — pinterest alternative</li>
+      <li><a href="https://huggingface.co/spaces/tfrere/font-map" target="_blank">fontsmap</a> — google fonts mapping</li>
+    </ul>
   </main>
-  <!-- <as-dithered-image crunch="2" src="src/240202oro27.webp"></as-dithered-image> -->
-
-  <footer>
-    <!-- <pre>
-.                                        ...                                              
-......                             ....:::........                                        
-.......                        .::::.........:::.....                                     
-......                        -=-:::............:.::::                                    
-..                          .--:::................::.::                                   
-                            ::::......  .........:-.....                                  
-                           .-:-.......   ........:...::.                                  
-                           .-::......          . . ..::::.                                
-                           ....:.... .         ......:.:.. .                              
-.                         .........  .         .. .....:....                              
-.                         ......           . .. ..... .::...                              
-                          .:.....   ..    ....    .. .......                              
-                            .::...    .....        . . .:..                               
-                             .....  ......  .         ..:..                               
-                              .:...   .            ....::..                               
-                              .....         ...    ......                                 
-                                ..... ...   ..       ....                                 
-                                 .........          ...:-                                 
-                                 .........  .........:.:=.                                
-                           .......... ................:=-....                             
-                        .........:.--. ...............=:-:......                          
-                 .  . ........:------=:...........:..==-+-.......                         
-.         ...   .. ......  ..--:::..---:........::..=--==-::.::......                     
-.   ..  . ...  ....: :..  ...=..::.-=::--:.........--==--=---::.::. .    .                
-          .......:.. ::::::-:=+=---=-:::--:.:--:-=----::--:===:.::.:...  : .              
-     ....::::::::-==+=-=--==--=-++=----::::::--::===::::::-==--:::--:::.:...              
-  ..::::::::::::---===--::::-==-=++=--------==::::--===---:::::.:::---:--::..::.....      
-::::::::.........:...::::::--:-:::-::::---::----===+==-:-::::.::------:::..:..:-:.........
-:::::.::::::......:.......::::::::::::--::::--:------:::::::::::-::::........:-...........
-::.................................::::::::::-::::-::----:::::...........   .:.  .........
-::::..........   ..  ....................:::::..............................   ... .......
-:.............   . ..................:..:::::::...... .....:.........::.......  ..........
-..........         .. ......  . ..........................::........::::::................
-.......... . ..  ..                ...:..........................:....::::-:..............
-...............                 .................................::.....:::-:.............
-.................     ......   .......................::..........::::::.::::::...........
-......................::...:.......... ....      ....................::::::::---:.........
-................::::::.::::::............         ............. .......::::::::---::......
-..............::::...:::.:............   ...  ...................  ......::::::::::-::::..
-.............::::...................   .....  ................ .  . .::::...:::::::::--::.
-..................::........       .. ...................... .........::::::.:::::::::::::
-.......................::.          ....................... ......    ...:::::::::::::::::
-....................:....      .    ......  .....  .......     .. .........:::::::::::::::
-.......................        ..... ..   .. .:::     ...     . .............::::::::::::-
-.....................       .  ......  ...::.:::.  .::. .      ................:::::::::--
-  </pre> -->
-    <p>
-      <i>x0f6/archive</i> is an unfiltered and unselected archive of my personal visual creative projects. For a more
-      curated selection of my works, both personal and professional, please visit my official portfolio at <a
-        href="https://oglaize.framer.media/" target="_blank">https://oglaize.framer.media/</a>.
-    </p> <br />
-    <hr><br />
-    <p class="licence">
-      This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><img
-      src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""
-      style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
-      src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""
-      style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
-      src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt=""
-      style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
-      src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt=""
-      style="max-width: 1em;max-height:1em;margin-left: .2em;">
-    </p>
-  </footer>
-  <svg style="position:absolute; width:0; height:0;">
-    <filter id="duotone">
-      <feColorMatrix type="matrix" values="
-      0.33 0.33 0.33 0 0
-      0.33 0.33 0.33 0 0
-      0.33 0.33 0.33 0 0
-      0    0    0    1 0" result="grayscale" />
-      <feComponentTransfer in="grayscale" result="duotone" color-interpolation-filters="sRGB">
-        <feFuncR id="funcR" type="table" tableValues="0.13 0.94" />
-        <feFuncG id="funcG" type="table" tableValues="0.14 0.96" />
-        <feFuncB id="funcB" type="table" tableValues="0.14 0.94" />
-      </feComponentTransfer>
-      <feComposite in="duotone" in2="SourceGraphic" operator="in" />
-    </filter>
-  </svg>
-
-
-
-  <div class="lightbox-overlay" id="lightbox">
-    <!-- <button class="lightbox-close" id="lightbox-close" aria-label="fermer">✕</button> -->
-    <div class="lightbox-content" id="lightbox-content"></div>
-    <p class="lightbox-caption" id="lightbox-caption"></p>
-  </div>
-  <script>
-    (function () {
-      const overlay = document.getElementById('lightbox');
-      const content = document.getElementById('lightbox-content');
-      const caption = document.getElementById('lightbox-caption');
-      // const closeBtn  = document.getElementById('lightbox-close');
-
-      function openLightbox(mediaEl, captionText) {
-        content.innerHTML = ''; // vide le contenu précédent
-
-        let clone;
-        if (mediaEl.tagName === 'VIDEO') {
-          clone = document.createElement('video');
-          // on récupère la vraie source, que la vidéo soit déjà
-          // chargée (src) ou encore en lazy-load (data-src)
-          const realSrc = mediaEl.src || mediaEl.dataset.src;
-          clone.src = realSrc;
-          clone.controls = true;
-          clone.autoplay = true;
-          clone.loop = true;
-          clone.muted = true;
-          clone.playsInline = true;
-        } else {
-          clone = document.createElement('img');
-          clone.src = mediaEl.src;
-          clone.alt = mediaEl.alt || '';
-        }
-
-        content.appendChild(clone);
-        caption.textContent = captionText || '';
-        overlay.classList.add('open');
-        document.body.style.overflow = 'hidden'; // empêche le scroll derrière
-      }
-
-      function closeLightbox() {
-        overlay.classList.remove('open');
-        document.body.style.overflow = '';
-        // coupe la vidéo pour libérer mémoire/réseau
-        const vid = content.querySelector('video');
-        if (vid) {
-          vid.pause();
-          vid.removeAttribute('src');
-          vid.load();
-        }
-        content.innerHTML = '';
-      }
-
-      // Ouverture au clic sur chaque .media
-      document.querySelectorAll('.item .media').forEach((mediaWrapper) => {
-        mediaWrapper.addEventListener('click', () => {
-          const mediaEl = mediaWrapper.querySelector('img, video');
-          if (!mediaEl) return;
-          const item = mediaWrapper.closest('.item');
-          const captionEl = item ? item.querySelector('p') : null;
-          openLightbox(mediaEl, captionEl ? captionEl.textContent : '');
-        });
-      });
-
-      // Fermeture : bouton, clic sur le fond, touche Échap
-      // closeBtn.addEventListener('click', closeLightbox);
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeLightbox();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && overlay.classList.contains('open')) closeLightbox();
-      });
-    })();
-  </script>
 </body>
 
 </html>

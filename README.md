@@ -1,6 +1,7 @@
 ## About
-A showcase archive for my experimental and unfinished 2D/3D motion & graphic design work.
-https://x0f6.github.io/archive/ 
+
+A free ressources curated database.
+https://x0f6.github.io/xfdb/ 
 
 <!--
 **ofg135/ofg135** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.

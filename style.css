@@ -110,7 +110,13 @@ body {
   margin: 0;
   text-transform: capitalize;
 }
-
+@media (max-width: 1250px) {
+  body {
+    display: grid;
+  grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+}
 a {
   color: var(--bl);
   text-decoration: none;
@@ -153,8 +159,8 @@ hr {
 }
 
 main {
-  padding: 2rem 4rem;
-  width: max-content;
+  padding: 2rem;
+  width: fit-content;
 }
 
 header {
@@ -167,6 +173,7 @@ header {
   flex-direction: column;
   align-items: end;
   border-right: 2px solid var(--fg);
+  margin-left: 16rem;
 }
 
 header .title-menu {
@@ -200,6 +207,30 @@ header .page {
 
 header .page p {
   margin: 0;
+}
+
+@media (max-width: 1250px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin: 0;
+    padding: 2rem;
+    background-color: var(--bg);
+  }
+  header .title {
+    font-size: 4.25rem;
+  }
+  header h1 {
+    font-size: 2.62rem;
+  }
+  header .title-menu, header .page {
+    margin-top: 0;
+  }
+}
+
+.os {
+  color: var(--ye);
 }
 
 /* LANDING PAGE */

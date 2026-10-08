@@ -227,6 +227,12 @@ header .page p {
   header .title-menu, header .page {
     margin-top: 0;
   }
+  h2 {
+    font-size: 1.62rem;
+  }
+  h3 {
+    font-size: 1em;
+  }
 }
 
 .os {
